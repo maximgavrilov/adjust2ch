@@ -17,11 +17,11 @@ const app = express();
 const ch = new ClickHouse(config.ch);
 
 const logger = winston.createLogger({
-	level: 'info',
-	format: winston.format.simple(),
-	transports: [
-		new winston.transports.File({ filename: 'combined.log' })
-	]
+    level: 'info',
+    format: winston.format.simple(),
+    transports: [
+        new winston.transports.File({ filename: 'combined.log' })
+    ]
 });
 
 app.use(morgan('combined'));
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const event = (dbTable, optFields) => (req, res) => {
     const allFields = [ ...optFields, ...fields ];
-	const qs = { ...req.query };
+    const qs = { ...req.query };
 
     for (const k in Object.keys(qs)) {
         if (!allFields.indexOf(k) < 0) {
@@ -40,19 +40,19 @@ const event = (dbTable, optFields) => (req, res) => {
         }
     }
 
-	// Build the query based on the known parameters
-	const columns = Object.keys(qs).join(', ');
-	const values = Object.values(qs).map(
+    // Build the query based on the known parameters
+    const columns = Object.keys(qs).join(', ');
+    const values = Object.values(qs).map(
         val => `'${val.replace(/'/g, "\\'")}'`
     ).join(', ');
 
-	ch.query(`INSERT INTO ${dbTable} (${columns}) VALUES (${values})`, (err, result) => {
-		if (err) {
-			res.status(500).send(err.message);
-		} else {
-			res.send('OK');
-		}
-	});
+    ch.query(`INSERT INTO ${dbTable} (${columns}) VALUES (${values})`, (err, result) => {
+        if (err) {
+            res.status(500).send(err.message);
+        } else {
+            res.send('OK');
+        }
+    });
 };
 
 const sql = (dbTable, optFields) => (req, res) => {
@@ -95,5 +95,5 @@ for (const t of Object.keys(config.tables)) {
 }
 
 app.listen(config.server.port, () => {
-	console.log(`Server is running on ${config.server.host}:${config.server.port}/`);
+    console.log(`Server is running on ${config.server.host}:${config.server.port}/`);
 });
