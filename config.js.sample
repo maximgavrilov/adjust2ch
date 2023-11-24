@@ -1,0 +1,40 @@
+module.exports = {
+    ch: {
+        url: 'http://localhost',
+        port: 8123,
+        debug: false,
+        basicAuth: null,
+        isUseGzip: false,
+        format: "json",
+        raw: false,
+        user: "__USER__",
+        password: "__PASSWORD__",
+        queryOptions: {
+            database: 'adjust'
+        }
+    },
+
+    server: {
+        host: 'http://localhost',
+        port: 3001
+    },
+
+    tables: {
+        project1: [
+            'name',
+            'ab',
+            'social',
+            'uid',
+            'param1',
+            'param2',
+            'param3',
+            'param4',
+            'param5'
+        ],
+
+        project2: [
+            'login_utc',
+            'login_sec',
+        ]
+    }
+};
