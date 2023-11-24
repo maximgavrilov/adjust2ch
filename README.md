@@ -7,9 +7,9 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-clickhou
 
 4. Run `node index.js`
 
-5. <server>/<table>/sql – CREATE command for ClickHouse
+5. `<server>/<table>/sql` – CREATE command for ClickHouse
 
-6. <server>/<table>/url – callback url for Adjust
+6. `<server>/<table>/url` – callback url for Adjust
 
 7. Run with pm2
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-22-04
