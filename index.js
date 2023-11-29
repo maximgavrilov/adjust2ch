@@ -83,7 +83,7 @@ ORDER BY (id, date)
 
 const url = (dbTable) => (req, res) => {
     const base = `${config.server.host}:${config.server.port}`
-    const q = fields.map((f) => `${f}={${f}}`).join('&amp;');
+    const q = fields.map((f) => `${f}={${f.split('__').join('||')}}`).join('&amp;');
     res.send(`<pre style="white-space: pre-wrap">${base}/${dbTable}?${q}</pre>`);
 };
 
