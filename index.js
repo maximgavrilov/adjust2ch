@@ -65,7 +65,7 @@ USE ${db};
 
 CREATE TABLE ${dbTable} (
     id UUID DEFAULT generateUUIDv4(),
-    date DateTime DEFAULT now(),
+    ts DateTime64 DEFAULT now(),
 
     ${optFields.map((f) =>
         `${f} String DEFAULT ''`
