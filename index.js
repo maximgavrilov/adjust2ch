@@ -76,8 +76,8 @@ CREATE TABLE ${dbTable} (
     ).join(',\n    ')}
 )
 ENGINE = MergeTree()
-PRIMARY KEY id
-ORDER BY (id, date)
+PARTITION BY (toYYYYMMDD(ts))
+ORDER BY (adid, ts);
 </pre>`);
 };
 
