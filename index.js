@@ -78,6 +78,8 @@ CREATE TABLE ${dbTable} (
 ENGINE = MergeTree()
 PARTITION BY (toYYYYMMDD(ts))
 ORDER BY (adid, ts);
+
+ALTER TABLE ${dbTable} MODIFY COLUMN ts DateTime64 CODEC(T64);
 </pre>`);
 };
 
