@@ -84,7 +84,7 @@ ALTER TABLE ${dbTable} MODIFY COLUMN ts DateTime64 CODEC(T64);
 };
 
 const url = (dbTable) => (req, res) => {
-    const base = `${config.server.host}:${config.server.port}`
+    const base = config.server.url;
     const q = fields.map((f) => `${f}={${f.split('__').join('||')}}`).join('&amp;');
     res.send(`<pre style="white-space: pre-wrap">${base}/${dbTable}?${q}</pre>`);
 };
@@ -97,5 +97,5 @@ for (const t of Object.keys(config.tables)) {
 }
 
 app.listen(config.server.port, () => {
-    console.log(`Server is running on ${config.server.host}:${config.server.port}/`);
+    console.log(`Server is running on ${config.server.url}/`);
 });
