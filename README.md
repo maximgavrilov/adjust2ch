@@ -13,3 +13,10 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-clickhou
 
 7. Run with pm2
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-22-04
+
+Reasonable pm2 config:
+```
+pm2 install pm2-logrotate
+pm2 set pm2-logrotate:max_size 1G
+pm2 set pm2-logrotate:rotateModule false
+```
