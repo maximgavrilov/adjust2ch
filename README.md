@@ -17,6 +17,11 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-applica
 Reasonable pm2 config:
 ```
 pm2 install pm2-logrotate
-pm2 set pm2-logrotate:max_size 1G
-pm2 set pm2-logrotate:rotateModule false
+pm2 set pm2-logrotate:max_size 0
+pm2 set pm2-logrotate:retain 30
+pm2 set pm2-logrotate:compress true
+pm2 set pm2-logrotate:dateFormat YYYY-MM-DD
+pm2 set pm2-logrotate:workerInterval 30
+pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+pm2 set pm2-logrotate:rotateModule true
 ```
